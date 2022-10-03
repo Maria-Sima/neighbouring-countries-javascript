@@ -10,4 +10,5 @@ for (let i = 0; i < countries.length; i++) {
 select.addEventListener("change", () => {
     let value = select.options[select.selectedIndex].id;
     document.getElementById("flag").src = countries[value].flags.png;
+    document.getElementById("flag").innerText = countries[value].name.common;
 });
