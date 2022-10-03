@@ -1,14 +1,13 @@
-let countries = require('./data').countries;
-const select = document.querySelector("all");
-let option = document.createElement("option");
-
-let countriesNames = [];
+const select = document.getElementById("all");
 
 for (let i = 0; i < countries.length; i++) {
-countriesNames[i] = countries[i].name.common;
+    let option = document.createElement("option");
+    option.innerText = countries[i].name.common;
+    option.id = i;
+    select.append(option);
 }
 
-for (let i = 0; i < countriesNames.length; i++) {
-    option.text = countriesNames[i];
-    select.add(option, select[i]);
-}
+select.addEventListener("change", () => {
+    let value = select.options[select.selectedIndex].id;
+    document.getElementById("flag").src = countries[value].flags.png;
+});
