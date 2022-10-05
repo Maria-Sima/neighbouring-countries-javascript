@@ -113,33 +113,48 @@ area.addEventListener("click", () => {
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
 
-function prevNext() {
-    
-}
 
-let history = [];
+let historic = [];
+let historyPrevCounter = 0;
 
 select.addEventListener("change", () => {
-    history.push(select.selectedIndex, history);
-    let historyPrevCounter = 2;
-    console.log(history)
-    if(history.length > 1 && historyPrevCounter < history.length - 1) {
-        console.log(historyPrevCounter, history.length - 1)
+    historic.push(select.selectedIndex);    
+    if(historic.length > 1 && historic.length > historyPrevCounter - 1) {
         prev.style.visibility = "visible";
     }
-    prev.addEventListener("click", () => {
-        historyPrevCounter++;
-        console.log(historyPrevCounter)
-        document.getElementById("population").style.visibility = "visible";
-        document.getElementById("area").style.visibility = "visible";
-        document.getElementById("flag").style.visibility = "visible";
-        document.getElementById("select-incentive").style.visibility = "hidden";
-        document.getElementById("max-population").style.visibility = "hidden";
-        document.getElementById("all").selectedIndex = history[history.length - historyPrevCounter];
-        document.getElementById("flag").src = countries[history[history.length - 2] - 1].flags.png;
-        document.getElementById("common-name").innerText = countries[history[history.length - 2] - 1].name.common;
-        document.getElementById("region").innerText = countries[history[history.length - 2] - 1].region;
-        document.getElementById("subregion").innerText = countries[history[history.length - 2] - 1].subregion;
-        document.getElementById("capital").innerText = countries[history[history.length - 2] - 1].capital;
-    })
+});
+
+prev.addEventListener("click", () => {
+    historyPrevCounter++;
+    document.getElementById("population").style.visibility = "visible";
+    document.getElementById("area").style.visibility = "visible";
+    document.getElementById("flag").style.visibility = "visible";
+    document.getElementById("select-incentive").style.visibility = "hidden";
+    document.getElementById("max-population").style.visibility = "hidden";
+    console.log(historic,historyPrevCounter, historic[historic.length - 1 - historyPrevCounter])
+    document.getElementById("all").selectedIndex = historic[historic.length - 1 - historyPrevCounter];
+    document.getElementById("flag").src = countries[historic[historic.length - 1 - historyPrevCounter] - 1].flags.png;
+    document.getElementById("common-name").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].name.common;
+    document.getElementById("region").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].region;
+    document.getElementById("subregion").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].subregion;
+    document.getElementById("capital").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].capital;
+});
+
+let historyNextCounter = 0;
+next.style.visibility = "visible";
+
+next.addEventListener("click", () => {
+    historyNextCounter++;
+    document.getElementById("population").style.visibility = "visible";
+    document.getElementById("area").style.visibility = "visible";
+    document.getElementById("flag").style.visibility = "visible";
+    document.getElementById("select-incentive").style.visibility = "hidden";
+    document.getElementById("max-population").style.visibility = "hidden";
+    console.log(historic,historyNextCounter, historic[historic.length + historyPrevCounter])
+    document.getElementById("all").selectedIndex = historic[historic.length + historyPrevCounter];
+    document.getElementById("flag").src = countries[historic[historic.length - 1 - historyPrevCounter] - 1].flags.png;
+    document.getElementById("common-name").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].name.common;
+    document.getElementById("region").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].region;
+    document.getElementById("subregion").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].subregion;
+    document.getElementById("capital").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].capital;
 });
