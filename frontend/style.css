@@ -1,3 +1,41 @@
-#flag {
-
+body {
+    background-color: #5F0F40;
 }
+
+nav {
+    padding-left: 5vh;
+    padding-top: 1vh;
+}
+
+select {
+    background-color: #FB8B24;
+    width: 35.7%;
+}
+
+button  {
+    background-color: #E36414;
+    visibility: hidden;
+}
+
+img {
+    visibility: hidden;
+    border-style: ridge;
+    border-color: black;
+    height: 13vh;
+}
+
+#select-incentive {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.800);
+    top: 10%;
+    padding-left: 5vh;
+}
+
+#country {
+    position: absolute;
+    top: 20vh;
+    left: 10vh;
+    color: rgba(255, 255, 255, 0.800);
+}
+
+
