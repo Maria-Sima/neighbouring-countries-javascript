@@ -48,7 +48,7 @@ population.addEventListener("click", () => {
     
     for (let i = 0; i < countries.length; i++) {
         if (countries[i].cca3 == borders[borderMaxIndex]) {
-            history.push(i + 1);
+            historic.push(i + 1);
             document.getElementById("all").selectedIndex = i + 1;
             document.getElementById("population").style.visibility = "visible";
             document.getElementById("area").style.visibility = "visible";
@@ -93,7 +93,7 @@ area.addEventListener("click", () => {
 
   for (let i = 0; i < countries.length; i++) {
     if (countries[i].cca3 == borders[borderMaxIndex]) {
-        history.push(i + 1);
+        historic.push(i + 1);
         document.getElementById("all").selectedIndex = i + 1;
         document.getElementById("population").style.visibility = "visible";
         document.getElementById("area").style.visibility = "visible";
@@ -113,25 +113,26 @@ area.addEventListener("click", () => {
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
 
-
 let historic = [];
 let historyPrevCounter = 0;
 
 select.addEventListener("change", () => {
-    historic.push(select.selectedIndex);    
-    if(historic.length > 1 && historic.length > historyPrevCounter - 1) {
+    historic.push(select.selectedIndex);
+    if(historic.length > 1) {
         prev.style.visibility = "visible";
     }
 });
 
 prev.addEventListener("click", () => {
     historyPrevCounter++;
+    if(historic.length - 1 == historyPrevCounter) {
+      prev.style.visibility = "hidden";
+    }
     document.getElementById("population").style.visibility = "visible";
     document.getElementById("area").style.visibility = "visible";
     document.getElementById("flag").style.visibility = "visible";
     document.getElementById("select-incentive").style.visibility = "hidden";
     document.getElementById("max-population").style.visibility = "hidden";
-    console.log(historic,historyPrevCounter, historic[historic.length - 1 - historyPrevCounter])
     document.getElementById("all").selectedIndex = historic[historic.length - 1 - historyPrevCounter];
     document.getElementById("flag").src = countries[historic[historic.length - 1 - historyPrevCounter] - 1].flags.png;
     document.getElementById("common-name").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].name.common;
@@ -140,21 +141,26 @@ prev.addEventListener("click", () => {
     document.getElementById("capital").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].capital;
 });
 
-let historyNextCounter = 0;
 next.style.visibility = "visible";
 
 next.addEventListener("click", () => {
-    historyNextCounter++;
     document.getElementById("population").style.visibility = "visible";
     document.getElementById("area").style.visibility = "visible";
     document.getElementById("flag").style.visibility = "visible";
     document.getElementById("select-incentive").style.visibility = "hidden";
     document.getElementById("max-population").style.visibility = "hidden";
-    console.log(historic,historyNextCounter, historic[historic.length + historyPrevCounter])
-    document.getElementById("all").selectedIndex = historic[historic.length + historyPrevCounter];
-    document.getElementById("flag").src = countries[historic[historic.length - 1 - historyPrevCounter] - 1].flags.png;
-    document.getElementById("common-name").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].name.common;
-    document.getElementById("region").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].region;
-    document.getElementById("subregion").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].subregion;
-    document.getElementById("capital").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].capital;
+    document.getElementById("all").selectedIndex = historic[historic.length - historyPrevCounter];
+    document.getElementById("flag").src = countries[historic[historic.length - historyPrevCounter] - 1].flags.png;
+    document.getElementById("common-name").innerText = countries[historic[historic.length - historyPrevCounter] - 1].name.common;
+    document.getElementById("region").innerText = countries[historic[historic.length - historyPrevCounter] - 1].region;
+    document.getElementById("subregion").innerText = countries[historic[historic.length - historyPrevCounter] - 1].subregion;
+    document.getElementById("capital").innerText = countries[historic[historic.length - historyPrevCounter] - 1].capital;
+    historyPrevCounter--;
+    console.log(historic.length, historyPrevCounter)
+    if(historic.length - 1 > historyPrevCounter) {
+      prev.style.visibility = "visible";
+    }
+    if(historic.length - 1 < historyPrevCounter) {
+      next.style.visibility = "hidden";
+    }
 });
