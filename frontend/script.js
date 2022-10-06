@@ -128,6 +128,9 @@ prev.addEventListener("click", () => {
     if(historic.length - 1 == historyPrevCounter) {
       prev.style.visibility = "hidden";
     }
+    if(historyPrevCounter >= 1) {
+      next.style.visibility = "visible";
+    }
     document.getElementById("population").style.visibility = "visible";
     document.getElementById("area").style.visibility = "visible";
     document.getElementById("flag").style.visibility = "visible";
@@ -141,7 +144,6 @@ prev.addEventListener("click", () => {
     document.getElementById("capital").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].capital;
 });
 
-next.style.visibility = "visible";
 
 next.addEventListener("click", () => {
     document.getElementById("population").style.visibility = "visible";
@@ -156,11 +158,10 @@ next.addEventListener("click", () => {
     document.getElementById("subregion").innerText = countries[historic[historic.length - historyPrevCounter] - 1].subregion;
     document.getElementById("capital").innerText = countries[historic[historic.length - historyPrevCounter] - 1].capital;
     historyPrevCounter--;
-    console.log(historic.length, historyPrevCounter)
     if(historic.length - 1 > historyPrevCounter) {
       prev.style.visibility = "visible";
     }
-    if(historic.length - 1 < historyPrevCounter) {
+    if(historyPrevCounter == 0) {
       next.style.visibility = "hidden";
     }
 });
