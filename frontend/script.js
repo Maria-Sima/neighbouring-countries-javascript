@@ -9,12 +9,12 @@ for (let i = 0; i < countries.length; i++) {
 }
 
 select.addEventListener("change", () => {
+  document.getElementById("max-Area").style.visibility = "hidden";
   document.getElementById("translate").style.visibility = "visible";
   document.getElementById("population").style.visibility = "visible";
   document.getElementById("area").style.visibility = "visible";
   document.getElementById("flag").style.visibility = "visible";
   document.getElementById("select-incentive").style.visibility = "hidden";
-  document.getElementById("max-population").style.visibility = "hidden";
   let value = select.options[select.selectedIndex].id;
   document.getElementById("flag").src = countries[value].flags.png;
   document.getElementById("common-name").innerText = countries[value].name.common;
@@ -24,6 +24,7 @@ select.addEventListener("change", () => {
 });
 
 const population = document.querySelector("#population");
+
 
 population.addEventListener("click", () => {
   let countryId = select.options[select.selectedIndex].id;
@@ -56,7 +57,6 @@ population.addEventListener("click", () => {
       document.getElementById("area").style.visibility = "visible";
       document.getElementById("flag").style.visibility = "visible";
       document.getElementById("select-incentive").style.visibility = "hidden";
-      document.getElementById("max-population").style.visibility = "hidden";
       let value = select.options[i + 1].id;
       document.getElementById("flag").src = countries[value].flags.png;
       document.getElementById("common-name").innerText = countries[value].name.common;
@@ -77,8 +77,7 @@ area.addEventListener("click", () => {
 
   if (borders == undefined || borders.length == 0) {
     document.getElementById("max-Area").style.visibility = "visible";
-    document.getElementById("max-Area").innerText =
-      "The country doesn't have any neighbours";
+    document.getElementById("max-Area").innerText = "The country doesn't have any neighbours";
   }
 
   let bordersArea = [];
@@ -88,7 +87,7 @@ area.addEventListener("click", () => {
       if (countries[j].cca3 == borders[i]) {
         bordersArea[i] = countries[j].area;
       }
-    }
+    } 
   }
 
   let max = Math.max(...bordersArea);
@@ -102,7 +101,6 @@ area.addEventListener("click", () => {
       document.getElementById("area").style.visibility = "visible";
       document.getElementById("flag").style.visibility = "visible";
       document.getElementById("select-incentive").style.visibility = "hidden";
-      document.getElementById("max-population").style.visibility = "hidden";
       document.getElementById("flag").src = countries[i].flags.png;
       document.getElementById("common-name").innerText = countries[i].name.common;
       document.getElementById("region").innerText = countries[i].region;
@@ -138,7 +136,7 @@ prev.addEventListener("click", () => {
   document.getElementById("area").style.visibility = "visible";
   document.getElementById("flag").style.visibility = "visible";
   document.getElementById("select-incentive").style.visibility = "hidden";
-  document.getElementById("max-population").style.visibility = "hidden";
+
   document.getElementById("all").selectedIndex = historic[historic.length - 1 - historyPrevCounter];
   document.getElementById("flag").src = countries[historic[historic.length - 1 - historyPrevCounter] - 1].flags.png;
   document.getElementById("common-name").innerText = countries[historic[historic.length - 1 - historyPrevCounter] - 1].name.common;
@@ -153,7 +151,6 @@ next.addEventListener("click", () => {
   document.getElementById("area").style.visibility = "visible";
   document.getElementById("flag").style.visibility = "visible";
   document.getElementById("select-incentive").style.visibility = "hidden";
-  document.getElementById("max-population").style.visibility = "hidden";
   document.getElementById("all").selectedIndex = historic[historic.length - historyPrevCounter];
   document.getElementById("flag").src = countries[historic[historic.length - historyPrevCounter] - 1].flags.png;
   document.getElementById("common-name").innerText = countries[historic[historic.length - historyPrevCounter] - 1].name.common;
