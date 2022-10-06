@@ -1,5 +1,6 @@
 body {
     background-color: #5F0F40;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 nav {
@@ -9,12 +10,17 @@ nav {
 
 select {
     background-color: #FB8B24;
-    width: 35.7%;
+    width: 35.7%3
 }
 
 button  {
     background-color: #E36414;
     visibility: hidden;
+}
+
+#translate {
+    visibility: hidden;
+    width: 20vh;
 }
 
 img {
