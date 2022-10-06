@@ -19,25 +19,31 @@
 		<br>
 		<button id="population">Neighbour with the largest population</button>
 		<button id="area">Neighbour with the largest area</button>
-		<button id="prev">Previous country</button>
-		<button id="next">Next country</button>
 	</nav>
 	<h2 id="select-incentive">Select a country from the list</h2>
 	<main id="country">
-		<img id="flag">
+		<div id="main-info">
+			<img id="flag">
+			<br>
+			<br>
+			<select id="translate">
+				<option value="english">English</option>
+				<option value="arabic">Arabic</option>
+				<option value="german">German</option>
+				<option value="french">French</option>
+			</select>
+			<h1 id="common-name"></h1>
+		</div>
+		<div id="country-info">
+			<h2 id="region"></h2>
+			<h3 id="subregion"></h3>
+			<h4 id="capital"></h4>
+			<h3 id="max-Area"></h3>
+		</div>	
 		<br>
 		<br>
-		<select id="translate">
-			<option value="english">English</option>
-			<option value="arabic">Arabic</option>
-			<option value="german">German</option>
-			<option value="french">French</option>
-		</select>
-		<h1 id="common-name"></h1>
-		<h2 id="region"></h2>
-		<h3 id="subregion"></h3>
-		<h4 id="capital"></h4>
-		<h3 id="max-Area"></h3>
+		<button id="prev">Previous country</button>
+		<button id="next">Next country</button>
 	</main>
 </body>
 </html>

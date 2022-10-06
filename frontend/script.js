@@ -9,6 +9,7 @@ for (let i = 0; i < countries.length; i++) {
 }
 
 select.addEventListener("change", () => {
+  translate.selectedIndex = 0;
   document.getElementById("max-Area").style.visibility = "hidden";
   document.getElementById("translate").style.visibility = "visible";
   document.getElementById("population").style.visibility = "visible";
@@ -27,6 +28,7 @@ const population = document.querySelector("#population");
 
 
 population.addEventListener("click", () => {
+  translate.selectedIndex = 0;
   let countryId = select.options[select.selectedIndex].id;
   let borders = countries[countryId].borders;
 
@@ -71,7 +73,7 @@ population.addEventListener("click", () => {
 const area = document.querySelector("#area");
 
 area.addEventListener("click", () => {
-
+  translate.selectedIndex = 0;
   let countryId = select.options[select.selectedIndex].id;
   let borders = countries[countryId].borders;
 
@@ -125,6 +127,7 @@ select.addEventListener("change", () => {
 });
 
 prev.addEventListener("click", () => {
+  translate.selectedIndex = 0;
   historyPrevCounter++;
   if (historic.length - 1 == historyPrevCounter) {
     prev.style.visibility = "hidden";
@@ -147,6 +150,7 @@ prev.addEventListener("click", () => {
 
 
 next.addEventListener("click", () => {
+  translate.selectedIndex = 0;
   document.getElementById("population").style.visibility = "visible";
   document.getElementById("area").style.visibility = "visible";
   document.getElementById("flag").style.visibility = "visible";

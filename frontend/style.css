@@ -4,13 +4,13 @@ body {
 }
 
 nav {
-    padding-left: 5vh;
+    padding-left: 15vh;
     padding-top: 1vh;
 }
 
 select {
     background-color: #FB8B24;
-    width: 35.7%3
+    width: 37.4%;
 }
 
 button  {
@@ -27,20 +27,27 @@ img {
     visibility: hidden;
     border-style: ridge;
     border-color: black;
-    height: 13vh;
+    height: 17vh;
 }
 
 #select-incentive {
     position: absolute;
     color: rgba(255, 255, 255, 0.800);
     top: 10%;
-    padding-left: 5vh;
+    padding-left: 15vh;
 }
 
 #country {
     position: absolute;
     top: 20vh;
-    left: 10vh;
+    left: 20vh;
     color: rgba(255, 255, 255, 0.800);
 }
 
+#prev {
+    bottom: 10vh;
+}
+
+#next {
+    bottom: 10vh;
+}
